@@ -13,7 +13,7 @@ int majorityElement(vector<int>& nums) {
             return num;
         }
     }
-    return -1; // This should never be reached as per problem constraints.
+    return -1; 
 }
 
 int main() {
