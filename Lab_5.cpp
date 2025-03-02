@@ -3,7 +3,7 @@
 #include <unordered_map>
 
 using namespace std;
-
+// finding the majority element in the feast whihc wil be the king
 int majorityElement(vector<int>& nums) {
     unordered_map<int, int> freq;
     int n = nums.size();
@@ -29,8 +29,6 @@ int main() {
 
 
 // Question -2
-#include <bits/stdc++.h>
-using namespace std;
 
 typedef long long ll;
 
@@ -59,7 +57,6 @@ int mergeSort(vector<int>& nums, int left, int right) {
     count += merge(nums, left, mid, right);
     return count;
 }
-
 int main() {
     int n;
     cin >> n;
