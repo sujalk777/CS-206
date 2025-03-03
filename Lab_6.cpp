@@ -38,7 +38,8 @@ int main() {
     return 0;
 }
 
-// 
+// finding mystery pairs
+
 int Mystrypairs(const vector<int>& nums) {
     int n = nums.size();
     unordered_map<int, int> f;
