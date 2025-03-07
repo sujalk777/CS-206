@@ -1,3 +1,6 @@
+// Ques-2 you need to convert the given prime number to another prime number
+// but you need to cover minimum steps and the intermdiate number should also be a  prime.
+
 #include <iostream>
 #include <queue>
 #include <vector>
