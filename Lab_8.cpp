@@ -1,3 +1,108 @@
+#include <iostream>
+#include <unordered_map>
+#include <list>
+#include <vector>
+#include <string>
+#include <sstream>
+
+using namespace std;
+
+int capacity;
+int minFreq;
+unordered_map<int, pair<int, int>> keyVal;
+unordered_map<int, list<int>::iterator> keyT;
+unordered_map<int, list<int>> freq;
+
+void update(int key) {
+    int f = keyVal[key].second;
+    freq[f].erase(keyT[key]);
+    if (freq[f].empty()) {
+        freq.erase(f);
+        if (f == minFreq) minFreq++;
+    }
+    f++;
+    keyVal[key].second = f;
+    freq[f].push_front(key);
+    keyT[key] = freq[f].begin();
+}
+
+int get(int key) {
+    if (keyVal.find(key) == keyVal.end()) {
+        return -1;
+    }
+    update(key);
+    return keyVal[key].first;
+}
+
+void put(int key, int value) {
+    if (capacity <= 0) return;
+
+    if (keyVal.find(key) != keyVal.end()) {
+        keyVal[key].first = value;
+        update(key);
+        return;
+    }
+
+    if (static_cast<int>(keyVal.size()) >= capacity) {
+        int evictKey = freq[minFreq].back();
+        freq[minFreq].pop_back();
+        keyVal.erase(evictKey);
+        keyT.erase(evictKey);
+    }
+
+    keyVal[key] = {value, 1};
+    freq[1].push_front(key);
+    keyT[key] = freq[1].begin();
+    minFreq = 1;
+}
+
+vector<int> implement(int cacheSize, vector<string>& queries) {
+    capacity = cacheSize;
+    minFreq = 0;
+    keyVal.clear();
+    keyT.clear();
+    freq.clear();
+
+    vector<int> result;
+
+    for (const string& query : queries) {
+        istringstream iss(query);
+        string operation;
+        iss >> operation;
+
+        if (operation == "GET") {
+            int key;
+            iss >> key;
+            int value = get(key);
+            result.push_back(value);
+        } else if (operation == "PUT") {
+            int key, value;
+            iss >> key >> value;
+            put(key, value);
+        }
+    }
+
+    return result;
+}
+
+int main() {
+    int cacheSize, q;
+    cin >> cacheSize >> q;
+    cin.ignore();
+
+    vector<string> queries(q);
+    for (int i = 0; i < q; i++) {
+        getline(cin, queries[i]);
+    }
+
+    vector<int> result = implement(cacheSize, queries);
+
+    for (size_t i = 0; i < result.size(); i++) {
+        cout << result[i] << " ";
+    }
+
+    return 0;
+}
 // Ques-2 you need to convert the given prime number to another prime number
 // but you need to cover minimum steps and the intermdiate number should also be a  prime.
 
