@@ -29,3 +29,4 @@ int main() {
     cout << n + 1 << endl;
     return 0;
 }
+
