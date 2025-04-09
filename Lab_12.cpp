@@ -1,3 +1,17 @@
+// Once upon a time in the land of Chocovania, there were two magical robots — ChocoBot #1 and ChocoBot #2.
+// Their mission? To collect as many chocolates as possible from a special chocolate field!
+
+// The field was a grid where every cell had some chocolates, and the robots had their starting positions:
+
+// ChocoBot #1 always starts from the top-left corner (row 0, col 0).
+// ChocoBot #2 starts from the top-right corner (row 0, col m - 1). But the field has its own magical rules:
+
+// In each move, both bots move down one row to any of the three nearby columns: stay in the same column, go one step left, or one step right.
+// They continue moving like this until they reach the last row.
+// Every time a robot visits a cell, it collects all the chocolates there 🍬!
+// But! If both robots land on the same cell, only one of them can collect — no double dipping allowed!
+// The field is bounded — bots can't fall off! Your task is to guide both ChocoBots from top to bottom and help them collect as many chocolates as possible together!
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
