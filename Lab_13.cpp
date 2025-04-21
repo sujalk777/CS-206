@@ -1,3 +1,6 @@
+// Pavel begins in city number 1. He wants to open all portals as quickly as possible. 
+// Compute the minimum total time required to visit every portal city at least once (thus opening all portals).
+// Teleportation between open portals takes zero time, but travelling along a road of length 𝑤 takes time 𝑤 .
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -149,11 +152,13 @@ int main() {
             }
         }
     }
-
     cout << total_weight << endl;
-
     return 0;
 }
+
+
+
+
 // You are Arya's trusted assistant. She gives you a list of gem prices for the upcoming days and the fixed transaction fee. 
 // Your task is to help her calculate the maximum profit she can earn if she trades optimally.#include <vector>
 #include <algorithm>
